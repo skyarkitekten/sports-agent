@@ -17,42 +17,50 @@ The project will adopt the use of ADRs to document all significant architectural
 
 ## Consequences
 
-- Determining what is "significant" is subjective and opionated. 
+- Determining what is "significant" is subjective and opionated.
 - Createing ADRs reduces cognitive load and ramp up, but take time away from coding.
 
 ## ADR Template
 
-```
+```markdown
 # ADR {number}: {title}
 
 ## Status
+
 {Proposed | Accepted | Deprecated | Superseded by ADR {number}}
 
 ## Context
+
 {Provide the context or background information that led to this decision.}
 
 ## Decision
+
 {Describe the decision that has been made.}
 
 ## Consequences
+
 {Explain the consequences of this decision, both positive and negative.}
 ```
 
 ## Example
 
-```
+```markdown
 # ADR 001: Use PostgreSQL for Database
 
 ## Status
+
 Accepted
 
 ## Context
+
 We need a robust, scalable, and open-source relational database for our application.
 
 ## Decision
+
 We will use PostgreSQL as our primary database.
 
 ## Consequences
+
 - We will benefit from PostgreSQL's advanced features and active community support.
 - Team members will need to familiarize themselves with PostgreSQL.
 ```
