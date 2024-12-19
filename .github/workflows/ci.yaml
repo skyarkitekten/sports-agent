@@ -2,30 +2,50 @@ name: .NET CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths:
+      - "**/*.cs"
+      - "**/*.csproj"
+      - ".github/workflows/ci.yaml"
   pull_request:
-    branches:
-      - main
+    branches: [main]
+    paths:
+      - "**/*.cs"
+      - "**/*.csproj"
+      - ".github/workflows/ci.yaml"
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src/to/SportsBall.Api
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "9.0.x"
+          dotnet-version: 9.0.x
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
 
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build solution
-        run: dotnet build --no-restore --configuration Debug
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
 
-      - name: Run tests
-        run: dotnet test --no-build --verbosity normal --configuration Debug
+      - name: Test
+        run: dotnet test --no-build --configuration Release --verbosity normal --parallel
