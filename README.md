@@ -8,6 +8,8 @@ The application is designed to be a sports agent that can answer questions about
 
 - **Sports Ball Api** - agent that can answer questions about sports, teams, players, and games.
 
+- **Contract Negotiation** - agent that can negotiate contracts for players.
+
 ## Getting Started
 
 1. Clone the repository
