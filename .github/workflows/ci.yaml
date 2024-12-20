@@ -45,9 +45,9 @@ jobs:
         working-directory: ./src/SportsBall.Api
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build --no-restore --configuration Debug
         working-directory: ./src/SportsBall.Api
 
       - name: Test
-        run: dotnet test --no-build --configuration Release --verbosity normal --parallel
+        run: dotnet test --no-build --configuration Debug
         working-directory: ./src/SportsBall.Api
