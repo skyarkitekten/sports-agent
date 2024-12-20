@@ -17,12 +17,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./src/SportsBall.Api
 
     steps:
-      - run: echo "Current directory is $PWD"
+      - name: Print working directory
+        run: pwd
+
+      - name: List directory contents
+        run: ls -la
 
       - uses: actions/checkout@v4
 
