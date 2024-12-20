@@ -41,7 +41,8 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore 
+        working-directory: src/SportsBall.api
 
       - name: Build
         run: dotnet build --no-restore --configuration Release
