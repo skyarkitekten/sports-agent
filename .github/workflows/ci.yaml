@@ -42,10 +42,12 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
-        working-directory: src/SportsBall.Api
+        working-directory: .src/SportsBall.Api
 
       - name: Build
         run: dotnet build --no-restore --configuration Release
+        working-directory: .src/SportsBall.Api
 
       - name: Test
         run: dotnet test --no-build --configuration Release --verbosity normal --parallel
+        working-directory: .src/SportsBall.Api
